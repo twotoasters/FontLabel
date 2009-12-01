@@ -67,7 +67,8 @@ extern NSString * const ZUnderlineStyleAttributeName;
 
 enum {
 	ZUnderlineStyleNone = 0x00,
-	ZUnderlineStyleSingle = 0x01
+	ZUnderlineStyleSingle = 0x01,
+	ZUnderlineStyleStrikethrough = 0x02
 };
 #define ZUnderlineStyleMask 0x00FF
 

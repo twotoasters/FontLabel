@@ -669,9 +669,11 @@ static CGSize drawOrSizeTextConstrainedToSize(BOOL performDraw, NSString *string
 						
 						CGContextShowGlyphsAtPoint(ctx, drawPoint.x, drawPoint.y + lineAscender, &glyphs[glyphIdx], numGlyphs);
 						NSNumber *underlineStyle = getValueOrDefaultForRun(currentRun, ZUnderlineStyleAttributeName);
-						if ([underlineStyle	integerValue] & ZUnderlineStyleMask) {
-							// we only support single for the time being
+						if ([underlineStyle	integerValue] & ZUnderlineStyleSingle) {
 							UIRectFill(CGRectMake(drawPoint.x, drawPoint.y + lineAscender, fragmentWidth, 1));
+						}
+						else if ([underlineStyle integerValue] & ZUnderlineStyleStrikethrough) {
+							UIRectFill(CGRectMake(drawPoint.x, drawPoint.y + (lineAscender - currentFont.descender) / 2, fragmentWidth, 1));
 						}
 						drawPoint.x += fragmentWidth;
 						glyphIdx += numGlyphs;
